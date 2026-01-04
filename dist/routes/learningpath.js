@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const learningpath_controller_1 = require("../controllers/learningpath.controller");
+const auth_1 = require("../middleware/auth");
+const adminOnly_1 = require("../middleware/adminOnly");
+const learningPathRouter = (0, express_1.Router)();
+learningPathRouter.post("/save-learning-path", auth_1.authenticate, learningpath_controller_1.saveLearningPath);
+learningPathRouter.get("/get-learning-paths/:userId", auth_1.authenticate, learningpath_controller_1.getLearningPaths);
+learningPathRouter.post("/update-learning-path-status", auth_1.authenticate, learningpath_controller_1.updateLearningPathStatus);
+learningPathRouter.get("/get-learning-path-progress/:userId/:learningPathId", auth_1.authenticate, learningpath_controller_1.getLearningPathProgress);
+learningPathRouter.post("/update-learning-document-status", auth_1.authenticate, learningpath_controller_1.updateLearningDocumentStatus);
+learningPathRouter.get("/get-all-learning-paths", auth_1.authenticate, adminOnly_1.adminOnly, learningpath_controller_1.getAllLearningPaths);
+exports.default = learningPathRouter;

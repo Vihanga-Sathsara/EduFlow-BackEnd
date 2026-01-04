@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../middleware/auth");
+const adminOnly_1 = require("../middleware/adminOnly");
+const ebook_1 = require("../middleware/ebook");
+const ebook_controller_1 = require("../controllers/ebook.controller");
+const ebookRouter = (0, express_1.Router)();
+ebookRouter.post("/upload-ebook", auth_1.authenticate, adminOnly_1.adminOnly, ebook_1.uploadEbook.single("file"), ebook_controller_1.uploadEbookFiles);
+ebookRouter.get("/get-all-ebooks", auth_1.authenticate, ebook_controller_1.getAllEbooks);
+exports.default = ebookRouter;
