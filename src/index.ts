@@ -16,7 +16,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin: ["https://edu-flow-back-end.vercel.app"],
+    origin: ["https://edu-flow-front-end.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"]
 }))
 app.use("/api/v1/auth", authRoutes)
