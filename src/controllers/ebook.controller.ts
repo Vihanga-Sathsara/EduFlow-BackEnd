@@ -52,3 +52,28 @@ export const getAllEbooks = async (req: Request, res: Response) => {
         res.status(500).json({ message: "Internal server error" })
     }
 }
+
+export const removeEbook = async (req:Request , res:Response) => {
+    
+    try{
+        const {_id} = req.body
+        if (!_id) {
+            return res.status(400).json({ message: "Ebook ID is required" })
+        }
+
+        const existingEbook = await Ebook.findById(_id)
+        if(!existingEbook){
+            return res.status(400).send("Ebook can't find..")
+        }
+        await Ebook.deleteOne({_id})
+        res.status(200).json({message: "Ebooks deleted successfully" })
+    }catch(error){
+        console.error(error)
+        res.status(500).json({
+            message: "Internal server error"
+        })
+    }
+   
+
+
+}

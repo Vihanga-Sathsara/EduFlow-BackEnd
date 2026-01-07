@@ -13,7 +13,7 @@ const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET as string
 
 export const registerUser = async (req: Request, res: Response) => {
     try{
-        const {email, password} = req.body;
+        const {email, password} = req.body
         const existingUser = await User.findOne({ email})
 
         if(existingUser) {
