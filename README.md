@@ -14,9 +14,9 @@ It supports user authentication, role-based access, ebook management, learning p
 ## Live Backend
 
 Deployed backend:  
-[https://your-backend-url.vercel.app](https://your-backend-url.vercel.app)  
+[https://edu-flow-back-end.vercel.app](https://edu-flow-back-end.vercel.app)  
 
-> Replace with your actual deployment URL
+> 
 
 ---
 
