@@ -42,6 +42,7 @@ export const registerUser = async (req: Request, res: Response) => {
     }
 }
 
+
 function generateRandomPassword(length: number): string {
     const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     const lower = "abcdefghijklmnopqrstuvwxyz"
@@ -201,7 +202,7 @@ export const registerAdmin = async (req: Request, res: Response) => {
         })
         res.status(201).json({
             message: "Admin registered successfully",
-            data: { email: user.email, role: user.role }
+            data: { _id:user._id, email: user.email, role: user.role,registeredDate:user.registeredDate }
         })
 
     }catch(error){
